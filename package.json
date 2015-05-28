@@ -1,0 +1,32 @@
+{
+  "name": "chui",
+  "version": "1.0.0",
+  "description": "A module for creating Web apps with ChocolateChip-UI",
+  "main": "index.js",
+  "bin": {
+    "chui": "./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sourcebits-robertbiggs/chui.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "ChocolateChip-UI",
+    "Hybrid App"
+  ],
+  "author": "Robert Biggs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sourcebits-robertbiggs/chui/issues"
+  },
+  "homepage": "https://github.com/sourcebits-robertbiggs/chui#readme",
+  "dependencies": {
+    "cpr": "^0.4.0",
+    "mkdirp": "^0.5.0",
+    "ncp": "^2.0.0",
+    "writefile": "^0.2.8",
+    "yargs": "^3.0.4",
+    "bluebird": "~2.9.24"
+  }
+}

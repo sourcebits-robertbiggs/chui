@@ -297,6 +297,8 @@ if(window.jQuery) {
 
 
   $.extend({
+    isIEEdge : (navigator.userAgent.match(/windows nt/i) && navigator.userAgent.match(/edge/i)),
+    isWinPhone : (/trident/img.test(navigator.userAgent) && /mobile/img.test(navigator.userAgent)),
     isiPhone : /iphone/img.test(navigator.userAgent),
     isiPad : /ipad/img.test(navigator.userAgent),
     isiPod : /ipod/img.test(navigator.userAgent),
@@ -304,16 +306,14 @@ if(window.jQuery) {
     isAndroid : (/android/img.test(navigator.userAgent) && !/trident/img.test(navigator.userAgent)),
     isWebOS : /webos/img.test(navigator.userAgent),
     isBlackberry : /blackberry/img.test(navigator.userAgent),
-    isTouchEnabled : ('createTouch' in document),
+    isTouchEnabled : ('createTouch' in document && (!$.isWinPhone || !$.isIEEdge)),
     isOnline :  navigator.onLine,
     isStandalone : navigator.standalone,
     isiOS6 : navigator.userAgent.match(/OS 6/i),
     isiOS7 : navigator.userAgent.match(/OS 7/i),
     isWin : /trident/img.test(navigator.userAgent),
-    isWinPhone : (/trident/img.test(navigator.userAgent) && /mobile/img.test(navigator.userAgent)),
     isIE10 : navigator.userAgent.match(/msie 10/i),
     isIE11 : (navigator.userAgent.match(/windows nt/i) && navigator.userAgent.match(/trident/i)),
-    isIEEdge : (navigator.userAgent.match(/windows nt/i) && navigator.userAgent.match(/edge/i)),
     isWebkit : navigator.userAgent.match(/webkit/),
     isMobile : /mobile/img.test(navigator.userAgent),
     isDesktop : !(/mobile/img.test(navigator.userAgent)),

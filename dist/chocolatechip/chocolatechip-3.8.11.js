@@ -10,7 +10,7 @@
 ChocolateChip.js
 Copyright 2015 Sourcebits www.sourcebits.com
 License: MIT
-Version: 3.8.8
+Version: 3.8.11
 */
 (function() {
   'use strict';
@@ -130,7 +130,7 @@ Version: 3.8.8
 
   $.extend({
  
-    version : "3.8.8",
+    version : "3.8.11",
     
     libraryName : 'ChocolateChip',
     
@@ -964,6 +964,7 @@ Version: 3.8.8
     
     dataset : function ( key, value ) {
       if (!this.length) return [];
+      if(!document.body.dataset) return [];
       var ret = [];
       if (typeof value === 'string' && value.length >= 0) {
         this.each(function(node) {
@@ -1746,28 +1747,33 @@ Version: 3.8.8
 
 
   $.extend($, {
-    isiPhone : /iphone/img.test(navigator.userAgent),
-    isiPad : /ipad/img.test(navigator.userAgent),
-    isiPod : /ipod/img.test(navigator.userAgent),
-    isiOS : /ip(hone|od|ad)/img.test(navigator.userAgent),
-    isAndroid : (/android/img.test(navigator.userAgent) && !/trident/img.test(navigator.userAgent)),
+    isMobile : /mobile/img.test(navigator.userAgent),
+    isTrident : /trident/img.test(navigator.userAgent),
+    isIEEdge : /edge/img.test(navigator.userAgent),
+    isWinPhone : (/trident/img.test(navigator.userAgent) || /edge/img.test(navigator.userAgent)) && /mobile/img.test(navigator.userAgent),
+    isiPhone : !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) && /iphone/img.test(navigator.userAgent),
+    isiPad : !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) && /ipad/img.test(navigator.userAgent),
+    isiPod : !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) && /ipod/img.test(navigator.userAgent),
+    isiOS : !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) && /ip(hone|od|ad)/img.test(navigator.userAgent),
+    isAndroid : !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) &&  (/android/img.test(navigator.userAgent) && !/trident/img.test(navigator.userAgent)),
     isWebOS : /webos/img.test(navigator.userAgent),
     isBlackberry : /blackberry/img.test(navigator.userAgent),
-    isTouchEnabled : ('createTouch' in document),
+    
+    isTouchEnabled : !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) && 'createTouch' in document,
+    
     isOnline :  navigator.onLine,
     isStandalone : navigator.standalone,
-    isiOS6 : navigator.userAgent.match(/OS 6/i),
-    isiOS7 : navigator.userAgent.match(/OS 7/i),
-    isWin : /trident/img.test(navigator.userAgent),
-    isWinPhone : (/trident/img.test(navigator.userAgent) && /mobile/img.test(navigator.userAgent)),
-    isIE10 : navigator.userAgent.match(/msie 10/i),
-    isIE11 : navigator.userAgent.match(/msie 11/i),
-    isWebkit : navigator.userAgent.match(/webkit/),
-    isMobile : /mobile/img.test(navigator.userAgent),
-    isDesktop : !(/mobile/img.test(navigator.userAgent)),
-    isSafari : (!/Chrome/img.test(navigator.userAgent) && /Safari/img.test(navigator.userAgent) && !/android/img.test(navigator.userAgent)),
-    isChrome : /Chrome/img.test(navigator.userAgent),
-    isNativeAndroid : (/android/i.test(navigator.userAgent) && /webkit/i.test(navigator.userAgent) && !/chrome/i.test(navigator.userAgent))
+    isWin : /edge/img.test(navigator.userAgent) || /trident/img.test(navigator.userAgent),
+    isIE10 : /msie 10/img.test(navigator.userAgent),
+    isIE11 : (/windows nt/img.test(navigator.userAgent) && /trident/img.test(navigator.userAgent)),
+    
+    isWebkit : (!/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) && /webkit/img.test(navigator.userAgent)),
+    isDesktop : (!/mobile/img.test(navigator.userAgent)),
+    isSafari : (!/edge/img.test(navigator.userAgent) && !/Chrome/img.test(navigator.userAgent) && /Safari/img.test(navigator.userAgent) && !/android/img.test(navigator.userAgent)),
+    
+    isChrome : !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) && /Chrome/img.test(navigator.userAgent) && !((/samsung/img.test(navigator.userAgent) || /Galaxy Nexus/img.test(navigator.userAgent) || /HTC/img.test(navigator.userAgent) || /LG/img.test(navigator.userAgent)) && !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) &&  /android/i.test(navigator.userAgent) && /webkit/i.test(navigator.userAgent)),
+    
+    isNativeAndroid : ((/samsung/img.test(navigator.userAgent) || /Galaxy Nexus/img.test(navigator.userAgent) || /HTC/img.test(navigator.userAgent) || /LG/img.test(navigator.userAgent)) && !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) &&  /android/i.test(navigator.userAgent) && /webkit/i.test(navigator.userAgent))
   });
 
 
@@ -2238,63 +2244,37 @@ Version: 3.8.8
         timeout: 5000
       }
     */
-    JSONP : function ( options ) {
+    JSONP: function(options) {
       var settings = {
-        url : null,
+        url: null,
         callback: $.noop,
-        callbackType : 'callback=?',
+        callbackType: 'callback=?',
         timeout: null
       };
       $.extend(settings, options);
-      //var deferred = new $.Deferred();
-      var fn = 'fn_' + $.uuidNum(),
-      script = document.createElement('script'),
-      head = $('head')[0];
-      script.setAttribute('id', fn);
-      var startTimeout = new Date();
-      window[fn] = function(data) {
-        head.removeChild(script);
-        settings.callback(data);
-        deferred.resolve(data, 'resolved', settings);
-        delete window[fn];
-      };
-      var strippedCallbackStr = settings.callbackType.substr(0, settings.callbackType.length-1);
-      script.src = settings.url.replace(settings.callbackType, strippedCallbackStr + fn);
-      head.appendChild(script);
-      if (settings.timeout) {
-        var waiting = setTimeout(function() {
-          if (new Date() - startTimeout > 0) {
-            deferred.reject('timedout', settings);
-            settings.callback = $.noop;
-          }
-        }, settings.timeout);
-      }
-      //return deferred;
       return new Promise(function(resolve, reject) {
         var fn = 'fn_' + $.uuidNum(),
-        script = document.createElement('script'),
-        head = $('head')[0];
+          script = document.createElement('script'),
+          head = $('head')[0];
         script.setAttribute('id', fn);
-        var startTimeout = new Date();
+        var startTimeout = Number(new Date());
         window[fn] = function(data) {
           head.removeChild(script);
           settings.callback(data);
           resolve(data);
-          //deferred.resolve(data, 'resolved', settings);
           delete window[fn];
         };
-        var strippedCallbackStr = settings.callbackType.substr(0, settings.callbackType.length-1);
+        var strippedCallbackStr = settings.callbackType.substr(0, settings.callbackType.length - 1);
         script.src = settings.url.replace(settings.callbackType, strippedCallbackStr + fn);
         head.appendChild(script);
         if (settings.timeout) {
           var waiting = setTimeout(function() {
-            if (new Date() - startTimeout > 0) {
-              //deferred.reject('timedout', settings);
+            if (Number(new Date()) - startTimeout > 0) {
               reject('The request timedout.');
               settings.callback = $.noop;
             }
           }, settings.timeout);
-        }        
+        }
       });
     },
     

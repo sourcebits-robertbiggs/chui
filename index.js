@@ -405,9 +405,9 @@ var createProject = function() {
     }
     if (lib === 'chocolatechip') {
       ncp(p.join('dist', 'chocolatechip'), p.join(path, name, 'chui'), noop);
-      cpr(p.join('dist', 'typings', 'chocolatechip'), p.join(path, name, 'typings', 'chocolatechip'), noop);
+      cpr(p.join('dist', 'typings', 'chocolatechipjs'), p.join(path, name, 'typings', 'chocolatechipjs'), noop);
       cpr(p.join('dist', 'typings', 'chui'), p.join(path, name, 'typings', 'chui'), noop);
-      writefile(p.join(path, name, 'typings', 'tsd.d.ts'), '/// <reference path="chocolatechip/chocolatechip.d.ts" />\n/// <reference path="chui/chui.d.ts" />', noop);
+      writefile(p.join(path, name, 'typings', 'tsd.d.ts'), '/// <reference path="chocolatechipjs/chocolatechipjs.d.ts" />\n/// <reference path="chui/chui.d.ts" />', noop);
     } else {
       cpr(p.join('dist', 'typings', 'jquery'), p.join(path, name, 'typings', 'jquery'), noop);
       cpr(p.join('dist', 'typings', 'chui'), p.join(path, name, 'typings', 'chui'), noop);

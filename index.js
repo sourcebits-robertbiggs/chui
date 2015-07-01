@@ -266,7 +266,7 @@ var tabbarTemplate = '<!DOCTYPE html>\n\
       <h2>Uses</h2>\n\
       <ul class="list">\n\
         <li>\n\
-          <h3>Pastires</h3>\n\
+          <h3>Pastries</h3>\n\
         </li>\n\
         <li>\n\
           <h3>Fruit Salad</h3>\n\

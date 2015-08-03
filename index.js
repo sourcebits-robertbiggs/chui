@@ -5,7 +5,7 @@ var writefile = require('writefile');
 var cpr = require('cpr');
 var ncp = require('ncp').ncp;
 var p = require("path");
-var argv = require('yargs').usage('Usage: --name "Icecream" --path "~/Documents/myWebApp" --os: (ios, android, win) --lib (jquery, chocolatechip) --type (plain, navigation, tab, slideout').argv;
+var argv = require('yargs').usage('Usage: --name "Icecream" --path "~/Documents/myWebApp" --os: (ios, android, win) --lib (jquery, chocolatechipjs) --type (plain, navigation, tab, slideout').argv;
 //var path = process.env.HOME + '/Desktop/';
 var name = argv.name || argv.n;
 var homedir = (process.platform === "win32") ? process.env.HOMEPATH : process.env.HOME;
@@ -15,8 +15,8 @@ var lib = "jquery";
 var whichLib = "http://code.jquery.com/jquery-2.1.4.min.js";
 if (argv.os) os = argv.os;
 if (argv.lib || argv.l) lib = argv.lib || argv.l;
-if (lib === 'chocolatechip') whichLib = "./chui/chocolatechip-3.8.11.js";
-var chuiVersion = "3.8.10";
+if (lib === 'chocolatechipjs') whichLib = "./chui/chocolatechipjs-4.0.0.js";
+var chuiVersion = "3.8.11";
 
 var pkg = require('./package.json');
 

@@ -11,13 +11,13 @@ ChocolateChip-UI
 ChUI.js
 Copyright 2015 Sourcebits www.sourcebits.com
 License: MIT
-Version: 3.8.10
+Version: 3.8.11
 */
 window.CHUIJSLIB;
 if(window.jQuery) {
   window.CHUIJSLIB = window.jQuery;
-} else if (window.$chocolatechipjs) {
-  window.CHUIJSLIB = window.$chocolatechipjs;
+} else if (window.chocolatechipjs) {
+  window.CHUIJSLIB = window.chocolatechipjs;
 }
 (function($) {
 
@@ -121,7 +121,7 @@ if(window.jQuery) {
         });
         return ret;
 
-      } else if (window.$chocolatechipjs) {
+      } else if (window.chocolatechipjs) {
         return this.is(selector);
       }
     },
@@ -145,7 +145,7 @@ if(window.jQuery) {
     iznt : function ( selector ) {
       if (window.jQuery) {
         return this.not(selector);
-      } else if (window.$chocolatechipjs) {
+      } else if (window.chocolatechipjs) {
         return this.isnt(selector);
       }
     },
@@ -170,7 +170,7 @@ if(window.jQuery) {
           }
         });
         return ret;        
-      } else if (window.$chocolatechipjs) {
+      } else if (window.chocolatechipjs) {
         return this.hasnt(selector);
       }
     },
@@ -186,7 +186,7 @@ if(window.jQuery) {
           }
         });
         return ret;
-      } else if(window.$chocolatechipjs) {
+      } else if(window.chocolatechipjs) {
         return this.hasClass(className);
       }
     },
@@ -203,7 +203,7 @@ if(window.jQuery) {
           }
         });
         return ret;
-      } else if (window.$chocolatechipjs) {
+      } else if (window.chocolatechipjs) {
         var ret = [];
         this.forEach(function(ctx) {
           if (ctx.classList.contains(className)) {
@@ -225,7 +225,7 @@ if(window.jQuery) {
           }
         });
         return ret;
-      } else if (window.$chocolatechipjs) {
+      } else if (window.chocolatechipjs) {
         var ret = [];
 
         return ret;
@@ -244,7 +244,7 @@ if(window.jQuery) {
           }
         });
         return ret;
-      } else if (window.$chocolatechipjs) {
+      } else if (window.chocolatechipjs) {
         var ret = [];
           if (!ctx.hasAttribute(property)){
             ret.push(ctx);
@@ -327,10 +327,7 @@ if(window.jQuery) {
     
     isChrome : !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) && /Chrome/img.test(navigator.userAgent) && !((/samsung/img.test(navigator.userAgent) || /Galaxy Nexus/img.test(navigator.userAgent) || /HTC/img.test(navigator.userAgent) || /LG/img.test(navigator.userAgent)) && !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) &&  /android/i.test(navigator.userAgent) && /webkit/i.test(navigator.userAgent)),
     
-    isNativeAndroid : ((/samsung/img.test(navigator.userAgent) || /Galaxy Nexus/img.test(navigator.userAgent) || /HTC/img.test(navigator.userAgent) || /LG/img.test(navigator.userAgent)) && !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) &&  /android/i.test(navigator.userAgent) && /webkit/i.test(navigator.userAgent)),
-
-    isWideScreen : window.innerWidth >= 960 && (window.orientation === 90 || window.orentation === -90),
-    isWideScreenPortrait : window.innerWidth >= 960 && (window.orientation !== 90 || window.orientation !== -90)
+    isNativeAndroid : ((/samsung/img.test(navigator.userAgent) || /Galaxy Nexus/img.test(navigator.userAgent) || /HTC/img.test(navigator.userAgent) || /LG/img.test(navigator.userAgent)) && !/trident/img.test(navigator.userAgent) && !/edge/img.test(navigator.userAgent) &&  /android/i.test(navigator.userAgent) && /webkit/i.test(navigator.userAgent))
   });
 
 
@@ -771,10 +768,14 @@ if(window.jQuery) {
       destinationToolbar = destination.next().hazClass('toolbar');
       destination.removeClass('previous next').addClass('current');
       destination.prev().removeClass('previous next').addClass('current');
-      destinationToolbar.removeClass('previous next').addClass('current');
+      if (destinationToolbar && destinationToolbar.length) {
+        destinationToolbar.removeClass('previous next').addClass('current');
+      }
       currentArticle.removeClass('current').addClass('next');
       currentArticle.prev().removeClass('current').addClass('next');
-      currentToolbar.removeClass('current').addClass('next');
+      if (currentToolbar && currentToolbar.length) {
+        currentToolbar.removeClass('current').addClass('next');
+      }
       $('.toolbar.previous').removeClass('previous').addClass('next');
       $.UISetHashOnUrl($.UINavigationHistory[$.UINavigationHistory.length-1]);
       triggerNavigationEvent(destination);
@@ -800,10 +801,14 @@ if(window.jQuery) {
       destinationToolbar = destination.next().hazClass('toolbar');
       destination.removeClass('previous').addClass('current');
       destination.prev().removeClass('previous').addClass('current');
-      destinationToolbar.removeClass('previous').addClass('current');
+      if (destinationToolbar[0] && destinationToolbar.length) {
+        destinationToolbar.removeClass('previous').addClass('current');
+      }
       currentArticle.removeClass('current').addClass('next');
       currentArticle.prev().removeClass('current').addClass('next');
-      currentToolbar.removeClass('current').addClass('next');
+      if (currentToolbar[0] && currentToolbar.length) {
+        currentToolbar.removeClass('current').addClass('next');
+      }
       $.UISetHashOnUrl($.UINavigationHistory[histLen-2]);
       if ($.UINavigationHistory.length === 1) return;
       $.UINavigationHistory.pop();
@@ -834,10 +839,14 @@ if(window.jQuery) {
       destinationToolbar = destination.next().hazClass('toolbar');
       current.removeClass('current').addClass('previous');
       currentNav.removeClass('current').addClass('previous');
-      currentToolbar.removeClass('current').addClass('previous');
+      if (currentToolbar && currentToolbar.length) {
+        currentToolbar.removeClass('current').addClass('previous');
+      }
       destination.removeClass(navigationClass).addClass('current');
       destinationNav.removeClass(navigationClass).addClass('current');
-      destinationToolbar.removeClass(navigationClass).addClass('current');
+      if (destinationToolbar && destinationToolbar.length) {
+        destinationToolbar.removeClass(navigationClass).addClass('current');
+      }
     
       $.UISetHashOnUrl(destination[0].id);
       setTimeout(function() {
@@ -1694,7 +1703,7 @@ if(window.jQuery) {
           // Move list item up:
           $(list).on('singletap', '.move-up', function(e) {
             var item = $(this).closest('li');
-            if ((window.$chocolatechipjs && item.is('li:first-child')[0]) || window.jQuery && item.is('li:first-child')) {
+            if ((window.chocolatechipjs && item.is('li:first-child')[0]) || window.jQuery && item.is('li:first-child')) {
               return;
             } else {
               // Mark list as edited:
@@ -1716,7 +1725,7 @@ if(window.jQuery) {
                 "transform": "translate3d(0," + height + "px,0)"
               });              
               setTimeout(function() {
-                if (window.$chocolatechipjs) {
+                if (window.chocolatechipjs) {
                   $.replace(prevClone, item);
                   $.replace(itemClone, prev);
                 } else {
@@ -1735,7 +1744,7 @@ if(window.jQuery) {
             // transitioned ones alter:
             var itemClone = item.clone();
             var nextClone = next.clone();
-            if ((window.$chocolatechipjs && item.is('li:last-child')[0]) || window.jQuery && item.is('li:last-child')) {
+            if ((window.chocolatechipjs && item.is('li:last-child')[0]) || window.jQuery && item.is('li:last-child')) {
               return;
             } else {
               // Mark list as edited:
@@ -1751,7 +1760,7 @@ if(window.jQuery) {
                 "transform": "translate3d(0,-" + height + "px,0)"
               });
               setTimeout(function() {
-                if (window.$chocolatechipjs) {
+                if (window.chocolatechipjs) {
                    $.replace(nextClone, item);
                    $.replace(itemClone, next);
                 } else {
@@ -2364,7 +2373,7 @@ if(window.jQuery) {
         $('article').forEach(function(ctx) {
           if (window.jQuery) {
             $(ctx).scrollTop(0);
-          } else if (window.$chocolatechipjs) {
+          } else if (window.chocolatechipjs) {
             ctx.scrollTop = 0;
           }
         });
@@ -2457,10 +2466,19 @@ if(window.jQuery) {
   */
   $.extend({
     UISearch : function(options) {
-      var article = options && options.articleId || $('article').eq(0);
-      var searchID = options && options.id || $.Uuid();
-      var placeholder = options && options.placeholder || 'search';
-      var results = options && options.results || 1;
+      var settings = {
+        articleId : $('article').eq(0)[0].id,
+        id: $.Uuid(),
+        placeholder: 'search',
+        results: 1
+      };
+      if (options) {
+        $.extend(settings, options);
+      }
+      var article = settings.articleId;
+      var searchID = settings.id;
+      var placeholder = settings.placeholder;
+      var results = settings.results;
       var widget = '<div class="searchBar"><input placeholder="' + placeholder +'" type="search" results="' + results + '" id="'+ searchID + '"></div>';
       $(article).find('section').prepend(widget);
       if ($.isWin) {
@@ -2515,18 +2533,17 @@ if(window.jQuery) {
         if (!options) return;
         $.extend(settings, options);
         var ul, li, className;
-        this.carouselContainer = typeof options.target === 'string' ? document.querySelector(options.target) : options.target;
-        this.options = {
+        this.carouselContainer = typeof settings.target === 'string' ? document.querySelector(settings.target) : settings.target;
+        this.settings = {
           panels: settings.panels,
           snapThreshold: settings.snapThreshold,
           loop: settings.loop
         };
         // Adjustment for RTL carousels:
         if ($.isRTL) {
-          options.loop = true;
+          settings.loop = true;
         }
-        // Include user's options:
-        for (var i in options) this.options[i] = options[i];
+        // Include user's settings:
         this.carouselContainer.style.overflow = 'hidden';
         this.carouselContainer.style.position = 'relative';
         this.carouselPanels = [];
@@ -2541,9 +2558,9 @@ if(window.jQuery) {
           li = document.createElement('li');
           li.id = 'carousel-panel-' + (j + 1);
           li.style.cssText = cssVendor + 'transform:translateZ(0);position:absolute;top:0;height:100%;width:100%;left:' + j * 100 + '%';
-          whichPanelIndex = j === -1 ? this.options.panels - 1 : j;
+          whichPanelIndex = j === -1 ? this.settings.panels - 1 : j;
           $(li).data('upcomingPanelIndex', whichPanelIndex);
-          if (!this.options.loop && j === -1) li.style.visibility = 'hidden';
+          if (!this.settings.loop && j === -1) li.style.visibility = 'hidden';
           this.track.appendChild(li);
           this.carouselPanels.push(li);
         }
@@ -2554,17 +2571,17 @@ if(window.jQuery) {
         this.carouselContainer.addEventListener(endEvent, this, false);
         this.track.addEventListener(transitionEndEvent, this, false);
         var pagination;
-        if (options.pagination) {
+        if (settings.pagination) {
           pagination = document.createElement('ul');
           pagination.className = 'pagination';
-          for (var k = 0; k < this.options.panels; k++) {
+          for (var k = 0; k < this.settings.panels; k++) {
             li = document.createElement('li');
             if (k === 0) {
               li.className = 'selected';
             }
             pagination.appendChild(li);
           }
-          if (window.$chocolatechipjs) {
+          if (window.chocolatechipjs) {
             this.carouselContainer.insertAdjacentElement('afterEnd', pagination);
           } else {
             $(this.carouselContainer).after(pagination);
@@ -2596,22 +2613,22 @@ if(window.jQuery) {
           this.carouselContainerWidth = this.carouselContainer.clientWidth;
           this.carouselContainerHeight = this.carouselContainer.clientHeight;
           this.panelWidth = this.carouselContainerWidth;
-          this.maxX = -this.options.panels * this.panelWidth + this.carouselContainerWidth;
-          this.snapThreshold = this.options.snapThreshold === null ?
+          this.maxX = -this.settings.panels * this.panelWidth + this.carouselContainerWidth;
+          this.snapThreshold = this.settings.snapThreshold === null ?
             Math.round(this.panelWidth * 0.15) :
-            /%/.test(this.options.snapThreshold) ?
-              Math.round(this.panelWidth * this.options.snapThreshold.replace('%', '') / 100) :
-              this.options.snapThreshold;
+            /%/.test(this.settings.snapThreshold) ?
+              Math.round(this.panelWidth * this.settings.snapThreshold.replace('%', '') / 100) :
+              this.settings.snapThreshold;
         },
         
         updatePanelCount: function (n) {
-          this.options.panels = n;
-          this.maxX = -this.options.panels * this.panelWidth + this.carouselContainerWidth;
+          this.settings.panels = n;
+          this.maxX = -this.settings.panels * this.panelWidth + this.carouselContainerWidth;
         },
         
         goToPanel: function (p) {
           this.carouselPanels[this.currentPanel].className = this.carouselPanels[this.currentPanel].className.replace(/(^|\s)carousel-panel-active(\s|$)/, '');
-          p = p < 0 ? 0 : p > this.options.panels-1 ? this.options.panels - 1 : p;
+          p = p < 0 ? 0 : p > this.settings.panels-1 ? this.settings.panels - 1 : p;
           console.log('p: ' , p);
           this.panel = p;
           this.track.style[transitionDuration] = '0s';
@@ -2622,23 +2639,23 @@ if(window.jQuery) {
             this.carouselPanels[2].style.left = this.panel * 100 - 100 + '%';
             this.carouselPanels[0].style.left = this.panel * 100 + '%';
             this.carouselPanels[1].style.left = this.panel * 100 + 100 + '%';
-            $(this.carouselPanels[2]).data('upcomingPanelIndex', this.panel === 0 ? this.options.panels - 1 : this.panel - 1);
+            $(this.carouselPanels[2]).data('upcomingPanelIndex', this.panel === 0 ? this.settings.panels - 1 : this.panel - 1);
             $(this.carouselPanels[0]).data('upcomingPanelIndex', this.panel);
-            $(this.carouselPanels[1]).data('upcomingPanelIndex', this.panel === this.options.panels - 1 ? 0 : this.panel + 1);
+            $(this.carouselPanels[1]).data('upcomingPanelIndex', this.panel === this.settings.panels - 1 ? 0 : this.panel + 1);
           } else if (this.currentPanel === 1) {
             this.carouselPanels[0].style.left = this.panel * 100 - 100 + '%';
             this.carouselPanels[1].style.left = this.panel * 100 + '%';
             this.carouselPanels[2].style.left = this.panel * 100 + 100 + '%';
-            $(this.carouselPanels[0]).data('upcomingPanelIndex', this.panel === 0 ? this.options.panels - 1 : this.panel - 1);
+            $(this.carouselPanels[0]).data('upcomingPanelIndex', this.panel === 0 ? this.settings.panels - 1 : this.panel - 1);
             $(this.carouselPanels[1]).data('upcomingPanelIndex', this.panel);
-            $(this.carouselPanels[2]).data('upcomingPanelIndex', this.panel === this.options.panels - 1 ? 0 : this.panel + 1);
+            $(this.carouselPanels[2]).data('upcomingPanelIndex', this.panel === this.settings.panels - 1 ? 0 : this.panel + 1);
           } else {
             this.carouselPanels[1].style.left = this.panel * 100 - 100 + '%';
             this.carouselPanels[2].style.left = this.panel * 100 + '%';
             this.carouselPanels[0].style.left = this.panel * 100 + 100 + '%';
-            $(this.carouselPanels[1]).data('upcomingPanelIndex', this.panel === 0 ? this.options.panels - 1 : this.panel - 1);
+            $(this.carouselPanels[1]).data('upcomingPanelIndex', this.panel === 0 ? this.settings.panels - 1 : this.panel - 1);
             $(this.carouselPanels[2]).data('upcomingPanelIndex', this.panel);
-            $(this.carouselPanels[0]).data('upcomingPanelIndex', this.panel === this.options.panels - 1 ? 0 : this.panel + 1);
+            $(this.carouselPanels[0]).data('upcomingPanelIndex', this.panel === this.settings.panels - 1 ? 0 : this.panel + 1);
           }
           this.slide();
         },
@@ -2707,7 +2724,7 @@ if(window.jQuery) {
           }
           e.preventDefault();
           this.directionLocked = true;
-          if (!this.options.loop && (newX > 0 || newX < this.maxX)) {
+          if (!this.settings.loop && (newX > 0 || newX < this.maxX)) {
             newX = this.x + (deltaX / 2);
           }
           this.getPosition(newX);
@@ -2719,7 +2736,7 @@ if(window.jQuery) {
           var dist = Math.abs(point.pageX - this.startX);
           this.initiated = false;
           if (!this.moved) return;
-          if (!this.options.loop && (this.x > 0 || this.x < this.maxX)) {
+          if (!this.settings.loop && (this.x > 0 || this.x < this.maxX)) {
             dist = 0;
           }
           // Check if exceeded snap threshold:
@@ -2756,13 +2773,13 @@ if(window.jQuery) {
           className = this.carouselPanels[this.currentPanel].className;
           /(^|\s)carousel-panel-active(\s|$)/.test(className) || (this.carouselPanels[this.currentPanel].className = !className ? 'carousel-panel-active' : className + ' carousel-panel-active');
           className = this.carouselPanels[panelMove].className;
-          pageFlipIndex = pageFlipIndex - Math.floor(pageFlipIndex / this.options.panels) * this.options.panels;
+          pageFlipIndex = pageFlipIndex - Math.floor(pageFlipIndex / this.settings.panels) * this.settings.panels;
           $(this.carouselPanels[panelMove]).data('upcomingPanelIndex', pageFlipIndex);
           // Index to be loaded in the newly moved panel:
           var newX = -this.panel * this.panelWidth;
           this.track.style[transitionDuration] = Math.floor(500 * Math.abs(this.x - newX) / this.panelWidth) + 'ms';
           // Hide the next panel if looping disabled:
-          if (!this.options.loop) {
+          if (!this.settings.loop) {
             this.carouselPanels[panelMove].style.visibility = newX === 0 || newX === this.maxX ? 'hidden' : '';
           }
           if (this.x === newX) {
@@ -2798,6 +2815,13 @@ if(window.jQuery) {
     */
     $.extend({
       UISetupCarousel : function ( options ) {
+        if (!options) return;
+        var settings = {
+          loop: false,
+          pagination: false
+        }
+        $.extend(settings, options);
+        
         // Method to adjust panel content for RTL:
         function reverseList ( array ) {
           var a = array.shift(0);
@@ -2805,29 +2829,27 @@ if(window.jQuery) {
           array.unshift(a);
           return array;
         }
-        if (!options) return;
-        options.loop = options.loop || false;
         var carousel = new UICarousel({
-          target: options.target,
-          panels: options.panels.length,
-          loop: options.loop,
-          pagination: options.pagination
+          target: settings.target,
+          panels: settings.panels.length,
+          loop: settings.loop,
+          pagination: settings.pagination
         });
-        $(options.target).data('carousel', carousel);
+        $(settings.target).data('carousel', carousel);
         // Reverse array of data if RTL:
-        if ($.isRTL) options.panels = reverseList(options.panels);
+        if ($.isRTL) settings.panels = reverseList(settings.panels);
         var panel;
         // Load initial data:
         for (var i = 0; i < 3; i++) {
-          panel = (i === 0) ? options.panels.length - 1 : i - 1;
-          carousel.carouselPanels[i].innerHTML = options.panels[Number(panel)];
+          panel = (i === 0) ? settings.panels.length - 1 : i - 1;
+          carousel.carouselPanels[i].innerHTML = settings.panels[Number(panel)];
         }
         var index = 0;
-        var pagination = $(options.target).next('ul.pagination');
+        var pagination = $(settings.target).next('ul.pagination');
         carousel.onSlide(function () {
           for (var i = 0; i < 3; i++) {
             var upcoming = $(carousel.carouselPanels[i]).data('upcomingPanelIndex');
-            carousel.carouselPanels[i].innerHTML = options.panels[Number(upcoming)];
+            carousel.carouselPanels[i].innerHTML = settings.panels[Number(upcoming)];
           }
           index = $('.carousel-panel-active').data('upcomingPanelIndex');
           pagination.find('li').removeClass('selected');
@@ -2837,14 +2859,14 @@ if(window.jQuery) {
             if (index < 1) {
               pagination.find('li').eq(0).addClass('selected');
             } else {
-              pagination.find('li').eq(options.panels.length - index).addClass('selected');
+              pagination.find('li').eq(settings.panels.length - index).addClass('selected');
             }
           } else {
             pagination.find('li').eq(index).addClass('selected');
           }
         }); 
-        $(options.target).on('mousedown', 'img', function() {return false;});
-        var width = $(options.target).css('width');
+        $(settings.target).on('mousedown', 'img', function() {return false;});
+        var width = $(settings.target).css('width');
         pagination.css('width', width);
         pagination.on('click', 'li', function() {
           $(this).siblings('li').removeClass('selected');

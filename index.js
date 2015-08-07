@@ -16,7 +16,7 @@ var whichLib = "http://code.jquery.com/jquery-2.1.4.min.js";
 if (argv.os) os = argv.os;
 if (argv.lib || argv.l) lib = argv.lib || argv.l;
 if (lib === 'chocolatechipjs') whichLib = "./chui/chocolatechipjs-4.0.0.js";
-var chuiVersion = "3.8.11";
+var chuiVersion = "3.9.0";
 
 var pkg = require('./package.json');
 
@@ -412,8 +412,8 @@ var createProject = function() {
         ncp(p.join(__dirname, 'dist', 'themes', 'windows'), p.join(path, name, 'chui'), noop);
         break;
     }
-    if (lib === 'chocolatechip') {
-      ncp(p.join(__dirname, 'dist', 'chocolatechip'), p.join(path, name, 'chui'), noop);
+    if (lib === 'chocolatechipjs') {
+      ncp(p.join(__dirname, 'dist', 'chocolatechipjs'), p.join(path, name, 'chui'), noop);
       cpr(p.join(__dirname, 'dist', 'typings', 'chocolatechipjs'), p.join(path, name, 'typings', 'chocolatechipjs'), noop);
       cpr(p.join(__dirname, 'dist', 'typings', 'chui'), p.join(path, name, 'typings', 'chui'), noop);
       writefile(p.join(path, name, 'typings', 'tsd.d.ts'), '/// <reference path="chocolatechipjs/chocolatechipjs.d.ts" />\n/// <reference path="chui/chui.d.ts" />', noop);

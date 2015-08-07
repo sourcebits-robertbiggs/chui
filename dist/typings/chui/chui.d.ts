@@ -1,8 +1,8 @@
-// Type definitions for chui v3.8.10
+// Type definitions for chui v3.8.11
 // Project: https://github.com/chocolatechipui/chocolatechip-ui
 // Definitions by: Robert Biggs <http://chocolatechip-ui.com>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
-// ChocolateChip-UI 3.8.10
+// ChocolateChip-UI 3.8.11
 /**
  These TypeScript delcarations for ChocolateChip-UI contain interfaces for both ChocolateChipJS and jQuery. Depending on which library you are using, you will get the type interfaces appropriate for it.
 */

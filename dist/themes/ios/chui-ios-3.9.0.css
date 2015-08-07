@@ -11,7 +11,7 @@ ChocolateChip-UI
 ChUI-iOS.css
 Copyright 2015 Sourcebits www.sourcebits.com
 License: MIT
-Version: 3.8.11
+Version: 3.9.0
 */
 /*
   To create a custom theme, uncomment the second of each of the following, then adjust the color for @primaryColor. If you want a secondary color, uncomment the line for @secondaryColor and set it's value to what you want.
@@ -2040,7 +2040,7 @@ html[dir=rtl] input[type="range"] {
   -webkit-mask-position: 50% 50%;
   -webkit-mask-size: 90% 90%;
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3Asvg%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20version%3D'1.1'%20width%3D'32'%20height%3D'26'%20viewBox%3D'0%200%2032%2026'%20id%3D'svg2'%3E%3Cdefs%20id%3D'defs8'%20%2F%3E%3Cg%20transform%3D'translate(0.13135593%2C-0.34322034)'%20id%3D'Page-1'%20style%3D'fill%3Anone%3Bstroke%3Anone'%3E%3Cg%20id%3D'Artboard-1'%20style%3D'stroke%3A%23000000%3Bstroke-width%3A5'%3E%3Cpath%20d%3D'm%2010.500868%2C22.761362%2011.023688%2C0%200%2C-27.9582975'%20transform%3D'matrix(0.70710678%2C0.70710678%2C-0.70710678%2C0.70710678%2C10.899977%2C-8.7504466)'%20id%3D'Rectangle-1'%20%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  -webkit-mask-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3Asvg%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20version%3D\'1.1\'%20width%3D\'32\'%20height%3D\'26\'%20viewBox%3D\'0%200%2032%2026\'%20id%3D\'svg2\'%3E%3Cdefs%20id%3D\'defs8\'%20%2F%3E%3Cg%20transform%3D\'translate(0.13135593%2C-0.34322034)\'%20id%3D\'Page-1\'%20style%3D\'fill%3Anone%3Bstroke%3Anone\'%3E%3Cg%20id%3D\'Artboard-1\'%20style%3D\'stroke%3A%23000000%3Bstroke-width%3A5\'%3E%3Cpath%20d%3D\'m%2010.500868%2C22.761362%2011.023688%2C0%200%2C-27.9582975\'%20transform%3D\'matrix(0.70710678%2C0.70710678%2C-0.70710678%2C0.70710678%2C10.899977%2C-8.7504466)\'%20id%3D\'Rectangle-1\'%20%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
   float: right;
   margin-top: -20px;
   background-color: #007aff;
@@ -2091,7 +2091,7 @@ html[dir=rtl] .list.select li.selected::after {
   -webkit-mask-position: 50% 50%;
   -webkit-mask-size: 90% 90%;
   -webkit-mask-repeat: no-repeat;
-  -webkit-mask-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3Asvg%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20version%3D'1.1'%20width%3D'76'%20height%3D'27'%20viewBox%3D'0%200%2076%2027'%20id%3D'svg2'%3E%3Cdefs%20id%3D'defs8'%20%2F%3E%3Cg%20transform%3D'translate(-283.79661%2C-123.77966)'%20id%3D'Page-1'%20style%3D'fill%3Anone%3Bstroke%3Anone'%3E%3Cg%20transform%3D'translate(254%2C108)'%20id%3D'Artboard-1'%20style%3D'stroke%3A%23000%3Bstroke-width%3A12%3Bstroke-linecap%3Around%3Bstroke-linejoin%3Around'%3E%3Cpath%20d%3D'm%2036.25%2C26.242187%2031.394531%2C7.972657%2030.53125%2C-8.425782'%20id%3D'Path-1'%20%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+  -webkit-mask-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3Asvg%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20xmlns%3D\'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg\'%20version%3D\'1.1\\'%20width%3D\'76\'%20height%3D\'27\'%20viewBox%3D\'0%200%2076%2027\'%20id%3D\'svg2\'%3E%3Cdefs%20id%3D\"defs8\"%20%2F%3E%3Cg%20transform%3D\"translate(-283.79661%2C-123.77966)\"%20id%3D\"Page-1\"%20style%3D\"fill%3Anone%3Bstroke%3Anone\"%3E%3Cg%20transform%3D\"translate(254%2C108)\"%20id%3D\"Artboard-1\"%20style%3D\"stroke%3A%23000%3Bstroke-width%3A12%3Bstroke-linecap%3Around%3Bstroke-linejoin%3Around\"%3E%3Cpath%20d%3D\"m%2036.25%2C26.242187%2031.394531%2C7.972657%2030.53125%2C-8.425782\"%20id%3D\"Path-1\"%20%2F%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E");
 }
 .sheet .button {
   color: #585d63;
@@ -2150,14 +2150,14 @@ article.current.blurred.removeBlurSlow {
 .slide-out {
   position: absolute;
   top: 45px;
-  left: 0;
+  right: 0;
   bottom: 0;
   background-color: #ffffff;
   z-index: 111111111;
-  width: 100%;
+  width: 90%;
   visibility: hidden;
-  -webkit-transform: translate3d(-100%, 0, 0);
-  transform: translate3d(-100%, 0, 0);
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
   -webkit-transition: all 0.25s ease-out;
   transition: all 0.25s ease-out;
   overflow-x: hidden;
@@ -2179,6 +2179,8 @@ article.current.blurred.removeBlurSlow {
   visibility: visible;
   -webkit-transform: translate3d(0, 0, 0);
   transform: translate3d(0, 0, 0);
+  border-left: solid 1px #c8c8c8;
+  box-shadow: -3px 0 6px rgba(0, 0, 0, 0.25);
 }
 .slide-out > section {
   -webkit-box-flex: 1;
@@ -2192,7 +2194,7 @@ button.slide-out-button {
   position: absolute;
   z-index: 1111111;
   top: 5px;
-  left: 15px;
+  right: 15px;
   width: 35px;
   height: 35px;
   -webkit-box-sizing: border-box;
@@ -2224,24 +2226,38 @@ body.slide-out-app > article.show {
   display: block !important;
   /*margin-top: 20px !important;*/
 }
+body.slide-out-app > article.navigable {
+  display: block !important;
+}
 body.slide-out-app > nav:not(:first-of-type) {
-  display: none !important;
+  display: none;
+}
+body.slide-out-app > nav:not(:first-of-type).current {
+  display: flex !important;
+  display: -webkit-flex !important;
+  display: -webkit-box !important;
 }
 body.slide-out-app > nav:not(:first-of-type).show {
   display: block !important;
   z-index: 10000;
 }
+html[dir=rtl] .slide-out {
+  right: 10%;
+}
 html[dir=rtl] button.slide-out-button {
-  right: 15px;
-  left: auto;
+  left: 15px;
+  right: auto;
 }
 html[dir=rtl] .slide-out {
-  -webkit-transform: translate3d(100%, 0, 0);
-  transform: translate3d(100%, 0, 0);
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  border-left: none;
+  border-right: solid 1px #c8c8c8;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.25);
 }
 html[dir=rtl] .slide-out.open {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
 }
 /* ==============================
    Stepper Control

@@ -2,6 +2,8 @@
 
 ##NPM module to generate ChocolateChip-UI apps.
 
+[![TypeScript definitions on DefinitelyTyped](//definitelytyped.org/badges/standard-flat.svg)](http://definitelytyped.org)
+
 This module enables you to create a shell for several types of ChocolateChip-UI apps. Depending on the arguments you provide, you can customize the output to suit your needs.
 
 ###Install

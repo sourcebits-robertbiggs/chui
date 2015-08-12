@@ -130,9 +130,9 @@ function chocolatechipjs(selector, context) {
     }
   };
 })(chocolatechipjs);
-window['chocolatechipjs'] = chocolatechipjs;
-if (typeof window['$'] === 'undefined') {
-  window['$'] = chocolatechipjs;
+window.chocolatechipjs = chocolatechipjs;
+if (typeof window.$ === 'undefined') {
+  window.$ = chocolatechipjs;
 }
 (function($) {
   $.extend($, {
@@ -2169,7 +2169,14 @@ function isForbiddenMethod(method) {
         }
         return;
       }
+      var reqTimeout;
+      if (init && init.timeout) {
+        reqTimeout = setTimeout(function() {
+          reject(new TypeError('Request timed out at: ' + input));
+        }, init.timeout);
+      }
       xhr.onload = function() {
+        clearTimeout(reqTimeout);
         var status = (xhr.status === 1223) ? 204 : xhr.status;
         if (status < 100 || status > 599) {
           reject(new TypeError('Network request failed'));
@@ -2185,6 +2192,7 @@ function isForbiddenMethod(method) {
         resolve(new Response(body, options));
       };
       xhr.onerror = function() {
+        clearTimeout(reqTimeout);
         reject(new TypeError('Network request failed'));
       };
       xhr.open(request.method, request.url, true);

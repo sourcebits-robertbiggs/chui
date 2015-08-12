@@ -15,7 +15,7 @@ var lib = "jquery";
 var whichLib = "http://code.jquery.com/jquery-2.1.4.min.js";
 if (argv.os) os = argv.os;
 if (argv.lib || argv.l) lib = argv.lib || argv.l;
-if (lib === 'chocolatechipjs') whichLib = "./chui/chocolatechipjs-4.0.0.js";
+if (lib === 'chocolatechipjs') whichLib = "./chui/chocolatechipjs-4.0.1.js";
 var chuiVersion = "3.9.0";
 
 var pkg = require('./package.json');
@@ -40,6 +40,7 @@ var template = '<!DOCTYPE html>\n\
   <script src="' + whichLib + '"></script>\n\
   <script src="./chui/chui-' + chuiVersion + '.js"></script>\n\
   <script>\n\
+    /// <reference path="typings/tsd.d.ts" />\n\
     $(function() {\n\
 \n\
     });\n\
@@ -70,6 +71,7 @@ var navigationTemplate = '<!DOCTYPE html>\n\
   <script src="' + whichLib + '"></script>\n\
   <script src="./chui/chui-' + chuiVersion + '.js"></script>\n\
     <script>\n\
+    /// <reference path="typings/tsd.d.ts" />\n\
     $(function() {\n\
       var items = [\n\
         {\n\
@@ -146,6 +148,7 @@ var tabbarTemplate = '<!DOCTYPE html>\n\
   <script src="' + whichLib + '"></script>\n\
   <script src="./chui/chui-' + chuiVersion + '.js"></script>\n\
   <script type="text/javascript">\n\
+    /// <reference path="typings/tsd.d.ts" />\n\
     $(function() {\n\
       var opts = {\n\
          tabs : 5,\n\
@@ -312,6 +315,7 @@ var slideoutTemplate = '<!DOCTYPE html>\n\
   <script src="' + whichLib + '"></script>\n\
   <script src="./chui/chui-' + chuiVersion + '.js"></script>\n\
   <script>\n\
+    /// <reference path="typings/tsd.d.ts" />\n\
     $(function() {\n\
       var fruitsData = [\n\
         {\n\
@@ -394,6 +398,7 @@ var createProject = function() {
     } else {
       writefile(p.join(path, name, 'index.html'), template, noop);
     }
+
     
     switch(os) {
       case 'android':
@@ -422,6 +427,7 @@ var createProject = function() {
       cpr(p.join(__dirname, 'dist', 'typings', 'chui'), p.join(path, name, 'typings', 'chui'), noop);
       writefile(p.join(path, name, 'typings', 'tsd.d.ts'), '/// <reference path="jquery/jquery.d.ts" />\n/// <reference path="chui/chui.d.ts" />', noop);
     }
+    cpr(p.join(__dirname, 'dist', 'jsconfig.json'), p.join(path, name), noop); 
   }
 
 }

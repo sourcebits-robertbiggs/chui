@@ -1,6 +1,6 @@
 {
   "name": "chui",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A module for creating Web apps with ChocolateChip-UI",
   "main": "index.js",
   "bin": {

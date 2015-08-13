@@ -57,15 +57,15 @@ You can also use shortened versions of the command flags: <code>n</code> for <co
 ```
 // Create a plain file in a folder named Fruits in ~/Documents/Dev 
 // with the Android theme, default libarary will be jQuery:
-chui --n Fruits --p ~/Documents/Dev/ --os android 
+chui -n Fruits -p ~/Documents/Dev/ --os android 
 
 // or create a tabbar interface in a folder Fruits on the desktop 
 // for iOS using the library ChocolateChipJS:
-chui --n Fruits --l chocolatechip --os ios --t tabbar
+chui -n Fruits -l chocolatechip --os ios -t tabbar
 
 // or create a slide out menu for Windows Phone in Fruits on the desktop, 
 // default libarary will be jQuery:
-chui --n Fruits --os win --t slideout
+chui -n Fruits --os win -t slideout
 ```
 
 When using the shortened forms, you can put a single hyphen:

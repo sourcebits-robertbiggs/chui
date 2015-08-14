@@ -162,12 +162,12 @@ interface ChocolateChipStatic {
    * @return An encode string form element names and values.
    */
   serialize(element: any): string;
-  
+
   /**
    * Parse the data in a Promise response as JSON.
-   * 
+   *
    * @param response The response from a Promise.
-   * @result 
+   * @result
    */
    json(reponse: Response): JSON;
   /**
@@ -445,7 +445,7 @@ interface ChocolateChipStatic {
    * Serialize
    */
    serialize(form: HTMLFormElement | ChocolateChipElementArray): string;
-   
+
   /**
    * Grabs values from a form and converts them into a JSON object.
    *
@@ -454,7 +454,7 @@ interface ChocolateChipStatic {
    * You use the form input's name to set up the namespace structure for your JSON, e.g. name="newUser.name.first".
    */
   form2JSON(rootNode: string | HTMLElement, delimiter: string): Object;
-  
+
   /**
    * Subscribe to a publication. You provide the topic you want to subscribe to, as well as a callback to execute when a publication occurs.
    * Any data passed by the publisher is exposed to the callback as its second parameter. The callback's first parameter is the published topic.
@@ -522,15 +522,15 @@ interface ChocolateChipStatic {
      *
      */
     data: {
-      controllerName?: any;
+      repeaterName: any;
     };
-    
+
     /**
      * Use this value to output an index value in a template repeater.
      */
     index: number;
   };
-  
+
   chch_cache: {
     data: {};
     events: {
@@ -1310,7 +1310,7 @@ declare type OpenEndedDictionary = Object;
  */
 
 interface fetch {
-  (input: string, 
+  (input: string,
     init?: {
     method?: string;
     headers?: {};
@@ -1417,7 +1417,7 @@ interface ChocolateChipStatic {
     timeout?: number;
     callbackName?: string;
     clear?: boolean;
-  }): any 
+  }): any
 }
 
 interface Window {

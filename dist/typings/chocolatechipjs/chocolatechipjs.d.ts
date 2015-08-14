@@ -1,4 +1,4 @@
-// Type definitions for chocolatechip v4.0.0
+// Type definitions for chocolatechip v4.0.2
 // Project: https://github.com/chocolatechipui/ChocolateChipJS
 // Definitions by: Robert Biggs <http://chocolatechip-ui.com>
 // Definitions: https://github.com/borisyankov/DefinitelyTyped
@@ -105,7 +105,7 @@ interface ChocolateChipStatic {
   uuidNum(): number;
 
   /**
-   * Creates a Uuid and returns it as a string with the prefix: "chch_".
+   * Creates a uuid using uuidNum().
    *
    * @return A string.
    */
@@ -522,9 +522,25 @@ interface ChocolateChipStatic {
      *
      */
     data: {
-      controllerName: any;
+      controllerName?: any;
     };
+    
+    /**
+     * Use this value to output an index value in a template repeater.
+     */
+    index: number;
   };
+  
+  chch_cache: {
+    data: {};
+    events: {
+      keys: any[];
+      values: any[];
+      set: Function;
+      hasKey: Function;
+      _delete: Function;
+    }
+  }
 
 }
 
@@ -879,7 +895,7 @@ interface ChocolateChipElementArray extends Array<HTMLElement> {
    * @param key Name of the data stored.
    * @return any
    */
-  removeData(key: string): any;
+  removeData(key?: string): any;
 
   /**
    * Store string data associated with the matched elements.
@@ -1128,7 +1144,7 @@ interface ChocolateChipElementArray extends Array<HTMLElement> {
    * @param useCapture Setting the third argument to true will trigger event bubbling. The default is false.
    * @return ChocolateChipStatic
    */
-  unbind(eventType: string, handler: (eventObject: Event) => any, useCapture?: boolean): ChocolateChipStatic;
+  unbind(eventType?: string, handler?: (eventObject: Event) => any, useCapture?: boolean): ChocolateChipStatic;
 
   /**
    * Add a delegated event to listen for the provided event on the descendant elements.
@@ -1151,7 +1167,7 @@ interface ChocolateChipElementArray extends Array<HTMLElement> {
    * @param useCapture Setting the third argument to true will trigger event bubbling. The default is false.
    * @return ChocolateChipStatic
    */
-  undelegate(selector: any, eventType: string, handler: (eventObject: Event) => any, useCapture?: boolean): ChocolateChipStatic;
+  undelegate(selector?: any, eventType?: string, handler?: (eventObject: Event) => any, useCapture?: boolean): ChocolateChipStatic;
 
   /**
    * Add a handler to an event for elements. If a selector is provided as the second argument, this implements a delegated event.

@@ -16,7 +16,7 @@ var whichLib = "http://code.jquery.com/jquery-2.1.4.min.js";
 if (argv.os) os = argv.os;
 if (argv.lib || argv.l) lib = argv.lib || argv.l;
 if (lib === 'chocolatechipjs') whichLib = "./chui/chocolatechipjs-4.0.3.js";
-var chuiVersion = "3.9.0";
+var chuiVersion = "3.9.1";
 
 var pkg = require('./package.json');
 

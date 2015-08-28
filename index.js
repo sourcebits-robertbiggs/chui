@@ -6,7 +6,6 @@ var cpr = require('cpr');
 var ncp = require('ncp').ncp;
 var p = require("path");
 var argv = require('yargs').usage('Usage: --name "Icecream" --path "~/Documents/myWebApp" --os: (ios, android, win) --lib (jquery, chocolatechipjs) --type (plain, navigation, tab, slideout').argv;
-//var path = process.env.HOME + '/Desktop/';
 var name = argv.name || argv.n;
 var homedir = (process.platform === "win32") ? process.env.HOMEPATH : process.env.HOME;
 var path = argv.path || argv.p || p.join(homedir, 'Desktop');

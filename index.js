@@ -380,11 +380,6 @@ var slideoutTemplate = '<!DOCTYPE html>\n\
 // Define function to create directories and write files:
 /////////////////////////////////////////////////////////
 var createProject = function() {
-  // console.log(name);
-  // if (path) {
-  //   console.log(path);
-  // }
-  // console.log(os);
   if (name) {
     ncp.limit = 16;
     mkdirp(p.join(path, name), noop);
@@ -398,7 +393,6 @@ var createProject = function() {
       writefile(p.join(path, name, 'index.html'), template, noop);
     }
 
-    
     switch(os) {
       case 'android':
         mkdirp(p.join(path, name, 'chui'), noop);
